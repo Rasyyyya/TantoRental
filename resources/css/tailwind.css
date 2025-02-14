@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  /* your styles... */
+}
+
+@layer components {
+  /* your styles... */
+}
+
+@layer base {
+  :root {
+    --accent: #EE82EE;
+    --black: #131313;
+    --gray: #f9f9f9;
+    --blue-gray: #f7f7fb;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen font-poppins;
+  }
+}
+
+@layer components {
+  section {
+    @apply min-w-full min-h-screen text-[var(--black)];
+  }
+
+  nav {
+    @apply z-[999] fixed top-0 left-0 w-full flex justify-between items-center 
+           text-[var(--black)] bg-white px-[50px] py-[30px] 
+           transition-all duration-100 ease-out;
+  }
+
+  nav.sticky {
+    @apply bg-white filter drop-shadow-lg;
+  }
+
+  .brand {
+    @apply no-underline transition-all duration-300 ease-in-out text-[var(--black)];
+  }
+
+  .brand h1 {
+    @apply text-[32px] font-bold;
+  }
+
+  .accent {
+    @apply text-[var(--accent)];
+  }
+
+  .brand:hover {
+    @apply opacity-80;
+  }
+
+  .menu {
+    @apply flex justify-center items-center gap-[42px];
+  }
+
+  .menu a {
+    @apply inline-block relative text-[var(--black)] no-underline 
+           text-[24px] font-medium;
+  }
+
+  .menu a::after {
+    @apply content-[''] absolute w-full scale-x-0 rounded-md h-[0.1em] 
+           bottom-0 left-0 bg-current origin-right transition-transform duration-250 
+           text-[var(--accent)];
+  }
+
+  .menu a:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  .btn {
+    @apply text-white text-[25px] cursor-pointer hidden;
+  }
+
+  .btn-2 {
+    @apply w-[160px] h-[50px] text-[20px] bg-[var(--accent)] 
+           border border-[var(--accent)] rounded-xl text-white 
+           transition-all duration-200 ease-in-out cursor-pointer 
+           drop-shadow-lg;
+  }
+
+  .btn-2:hover {
+    @apply bg-[var(--black)] filter drop-shadow-xl;
+  }
+
+  .hero-page {
+    @apply mt-[200px] flex px-[50px] justify-between overflow-hidden;
+  }
+
+  .hero-headlines {
+    @apply flex flex-col gap-[18px] w-[652px];
+  }
+
+  .hero-headlines h1 {
+    @apply text-[48px] font-bold;
+  }
+
+  .hero-headlines p {
+    @apply text-[20px];
+  }
+
+  .btn-hero {
+    @apply w-[276px] h-[62px] text-[24px];
+  }
+
+  .download-buttons {
+    @apply flex gap-[18px] mt-6;
+  }
+
+  .download-buttons img {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .download-buttons img:hover {
+    @apply opacity-80 cursor-pointer;
+  }
+
+  .hero-page-img {
+    @apply max-w-full h-auto;
+  }
+}
