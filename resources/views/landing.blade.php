@@ -1,7 +1,7 @@
 <!-- filepath: /d:/Projects/TantoRental/resources/views/landing.blade.php -->
 <x-app-layout>
     <!-- Hero Section -->
-    <section id="hero" class="container mx-auto px-6 mt-32 md:mt-48">
+    <section id="hero" class="container mx-auto px-6 mt-32 md:mt-48 h-screen">
         <div class="flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 space-y-6 text-center md:text-left">
                 <h1 class="text-4xl md:text-5xl font-bold">
