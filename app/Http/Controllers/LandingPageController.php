@@ -9,7 +9,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $cars = Car::take(6)->get();
+        $cars = Car::take(3)->get();
 
         $features = [
             [
