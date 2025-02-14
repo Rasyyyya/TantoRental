@@ -10,7 +10,7 @@ class LandingPageController extends Controller
     public function index()
     {
         $cars = Car::take(6)->get();
-        
+
         $features = [
             [
                 'icon' => 'fa-solid fa-car',
@@ -51,5 +51,10 @@ class LandingPageController extends Controller
         ];
 
         return view('landing', compact('cars', 'features', 'reviews'));
+    }
+
+    public function about()
+    {
+        return view('pages.about');
     }
 }
