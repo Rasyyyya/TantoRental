@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -28,62 +29,6 @@ class CarController extends Controller
             'image' => 'http://localhost:8000/image/about-info-item-3.png'
         ]
     ];
-        $cars = [
-            [
-                'name' => 'Innova Reborn',
-                'price' => '550000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/innova-reborn.png')
-            ],
-            [
-                'name' => 'Xpander Ultimate',
-                'price' => '500000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/xpander.png')
-            ],
-            [
-                'name' => 'Fortuner VRZ',
-                'price' => '600000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/New-fortuner.png')
-            ],
-            [
-                'name' => 'Alphard Hybrid',
-                'price' => '700000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/alphard-hybrid.png')
-            ],
-            [
-                'name' => 'Xenia R',
-                'price' => '400000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/new-xenia.png')
-            ],
-            [
-                'name' => 'Ertiga Hybrid Sport',
-                'price' => '450000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/ertiga-hybrid.png')
-            ],
-            [
-                'name' => 'Honda HR-V',
-                'price' => '400000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/hrvvv.png')
-            ],
-            [
-                'name' => 'Honda Jazz-GK5',
-                'price' => '300000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/hondajazz.png')
-            ],
-            [
-                'name' => 'Calya',
-                'price' => '300000',
-                'location' => 'AKPOL',
-                'image' => asset('http://localhost:8000/image/new-calya.png')
-            ]
-        ];
 
         $reviews = [
             [
@@ -102,7 +47,8 @@ class CarController extends Controller
                 'image' => asset('http://localhost:8000/image/profilecow.png')
             ]
         ];
-        return view('components.index', compact('features', 'cars', 'reviews'));
+        $cars = Car::all();
+        return view('index', compact('features', 'cars', 'reviews'));
     }
 
     /**

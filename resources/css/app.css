@@ -1,3 +1,114 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --accent: #ee82ee;
+        --black: #131313;
+        --gray: #f9f9f9;
+        --blue-gray: #f7f7fb;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply min-h-screen;
+    }
+}
+
+/* @layer components {
+    section {
+        @apply min-w-full min-h-screen text-[var(--black)];
+    }
+
+    nav {
+        @apply z-[999] fixed top-0 left-0 w-full flex justify-between items-center text-[var(--black)] bg-white px-[50px] py-[30px] transition-all duration-100 ease-out;
+
+        &.sticky {
+            @apply bg-white filter drop-shadow-lg;
+        }
+    }
+
+    .brand {
+        @apply no-underline transition-all duration-300 ease-in-out text-[var(--black)];
+
+        & h1 {
+            @apply text-[32px] font-bold;
+        }
+
+        &:hover {
+            @apply opacity-80;
+        }
+    }
+
+    .accent {
+        @apply text-[var(--accent)];
+    }
+
+    .menu {
+        @apply flex justify-center items-center gap-[42px];
+
+        & a {
+            @apply inline-block relative text-[var(--black)] no-underline text-[24px] font-medium;
+
+            &::after {
+                @apply content-[''] absolute w-full scale-x-0 rounded-md h-[0.1em] bottom-0 left-0 bg-current origin-right transition-transform duration-250 text-[var(--accent)];
+            }
+
+            &:hover::after {
+                @apply scale-x-100 origin-left;
+            }
+        }
+    }
+
+    .btn {
+        @apply text-white text-[25px] cursor-pointer hidden;
+    }
+
+    .btn-2 {
+        @apply w-[160px] h-[50px] text-[20px] bg-[var(--accent)] border border-[var(--accent)] rounded-xl text-white transition-all duration-200 ease-in-out cursor-pointer drop-shadow-lg;
+
+        &:hover {
+            @apply bg-[var(--black)] filter drop-shadow-xl;
+        }
+    }
+
+    .hero-page {
+        @apply mt-[200px] flex px-[50px] justify-between overflow-hidden;
+    }
+
+    .hero-headlines {
+        @apply flex flex-col gap-[18px] w-[652px];
+
+        & h1 {
+            @apply text-[48px] font-bold;
+        }
+
+        & p {
+            @apply text-[20px];
+        }
+    }
+
+    .btn-hero {
+        @apply w-[276px] h-[62px] text-[24px];
+    }
+
+    .download-buttons {
+        @apply flex gap-[18px] mt-6;
+
+        & img {
+            @apply transition-all duration-300 ease-out;
+
+            &:hover {
+                @apply opacity-80 cursor-pointer;
+            }
+        }
+    }
+
+    .hero-page-img {
+        @apply max-w-full h-auto;
+    }
+} */
