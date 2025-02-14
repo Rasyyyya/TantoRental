@@ -14,10 +14,10 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         Home
                     </x-nav-link>
-                    <x-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.index')">
+                    <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
                         About
                     </x-nav-link>
-                    <x-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.index')">
+                    <x-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.*')">
                         Cars
                     </x-nav-link>
                     <x-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.index')">

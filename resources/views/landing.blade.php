@@ -11,10 +11,11 @@
                     Kami menawarkan berbagai macam tipe mobil sewaan sesuai kebutuhan Anda. Baik Anda menyewa untuk
                     bepergian, dinas, liburan atau bussines trip
                 </p>
-                <a href="{{ route('cars.index') }}"
+                <a href="{{ auth()->check() ? route('cars.index') : route('login') }}"
                     class="inline-block px-8 py-4 bg-violet-500 text-white text-xl rounded-xl hover:bg-gray-900 transition-colors duration-200 shadow-lg">
-                    Get Started
+                    Book Now
                 </a>
+
             </div>
             <div class="md:w-1/2 mt-8 md:mt-0">
                 <img src="{{ asset('image/hero_img.png') }}" alt="hero" class="w-full h-auto" />
