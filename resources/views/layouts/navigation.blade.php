@@ -45,6 +45,9 @@
                                     Logout
                                 </x-dropdown-link>
                             </form>
+                            <x-dropdown-link :href="route('booking.index')">
+                                My Bookings
+                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 @else

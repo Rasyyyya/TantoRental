@@ -18,6 +18,8 @@ Route::resource('cars', CarController::class);
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/booking/{car}', [BookingController::class, 'create'])->name('booking.create');
-    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/booking/creaate/{car}', [BookingController::class, 'create'])->name('booking.create');
+    Route::get('/bookings', [BookingController::class, 'index'])->name('booking.index');
+    Route::post('/booking/create', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
 });
