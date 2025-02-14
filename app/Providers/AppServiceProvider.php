@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use App\Models\Booking;
 use App\Observers\BookingObserver;
+use App\View\Components\AppLayout;
+use App\View\Components\Dropdown;
+use App\View\Components\NavLink;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Booking::observe(BookingObserver::class);
+        Blade::component('app-layout', AppLayout::class);
+        Blade::component('nav-link', NavLink::class);
+        Blade::component('dropdown', Dropdown::class);
+        Blade::component('dropdown-link', 'components.dropdown-link');
     }
 }
