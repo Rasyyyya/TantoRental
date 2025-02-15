@@ -36,14 +36,15 @@ class BookingController extends Controller
         $car = Car::findOrFail($request->car_id);
         $startDate = Carbon::parse($request->start_date);
         $endDate = Carbon::parse($request->end_date);
-        $days = $endDate->diffInDays($startDate) + 1;
+        $days = $startDate->diffInDays($endDate);
+        $totalPrice = $car->price_per_day * $days;
 
         $booking = Booking::create([
             'user_id' => auth()->id(),
             'car_id' => $request->car_id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'total_price' => $car->price_per_day * $days,
+            'total_price' => $totalPrice,
             'status' => 'pending'
         ]);
 
