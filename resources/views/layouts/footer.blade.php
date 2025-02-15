@@ -32,13 +32,13 @@
                             class="text-gray-400 hover:text-violet-500 transition-colors">Home</a>
                     </li>
                     <li>
-                        <a href="#about" class="text-gray-400 hover:text-violet-500 transition-colors">About Us</a>
+                        <a href="{{ route('about') }}" class="text-gray-400 hover:text-violet-500 transition-colors">About Us</a>
                     </li>
                     <li>
-                        <a href="#cars" class="text-gray-400 hover:text-violet-500 transition-colors">Our Cars</a>
+                        <a href="{{ route('cars.index') }}" class="text-gray-400 hover:text-violet-500 transition-colors">Our Cars</a>
                     </li>
                     <li>
-                        <a href="#contact" class="text-gray-400 hover:text-violet-500 transition-colors">Contact</a>
+                        <a href="{{ route('about') }}" class="text-gray-400 hover:text-violet-500 transition-colors">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -49,11 +49,11 @@
                 <ul class="space-y-2">
                     <li class="flex items-center space-x-2 text-gray-400">
                         <i class="fas fa-map-marker-alt text-violet-500"></i>
-                        <span>123 Main Street, City, Country</span>
+                        <span>Akpol blok L No. 2, Gajahmungkur, Semarang</span>
                     </li>
                     <li class="flex items-center space-x-2 text-gray-400">
                         <i class="fas fa-phone text-violet-500"></i>
-                        <span>+1 234 567 890</span>
+                        <span>+62 812 345 876</span>
                     </li>
                     <li class="flex items-center space-x-2 text-gray-400">
                         <i class="fas fa-envelope text-violet-500"></i>
