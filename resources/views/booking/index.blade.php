@@ -41,6 +41,13 @@
                                 class="bg-violet-500 text-white px-4 py-2 rounded-md text-sm">
                                 Lihat Detail
                             </a>
+
+                            @if ($booking->status === 'done' && !$booking->review)
+                                <button onclick="openReviewModal({{ $booking->id }})"
+                                    class="bg-yellow-500 text-white px-4 py-2 rounded-md text-sm">
+                                    Beri Review
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -80,6 +87,133 @@
                 @endif
             </div>
         @endif
-
     </div>
+    <script>
+        let currentRating = 0;
+
+        function openReviewModal(bookingId) {
+            Swal.fire({
+                title: 'Berikan Review',
+                html: `
+                    <div class="mb-4">
+                        <div class="flex justify-center space-x-2 text-2xl mb-4">
+                            ${[1, 2, 3, 4, 5].map(num => `
+                                        <button type="button" 
+                                            onclick="setRating(${num})" 
+                                            class="star-rating focus:outline-none">
+                                            ★
+                                        </button>
+                                    `).join('')}
+                        </div>
+                        <textarea id="review-comment" 
+                            class="w-full px-3 py-2 border rounded-lg" 
+                            placeholder="Tulis komentar Anda..."
+                            rows="3"></textarea>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Kirim Review',
+                cancelButtonText: 'Batal',
+                confirmButtonColor: '#8B5CF6', // violet-500
+                cancelButtonColor: '#6B7280', // gray-500
+                customClass: {
+                    popup: 'swal-wide'
+                },
+                didOpen: () => {
+                    // Reset rating when modal opens
+                    currentRating = 0;
+                    updateStars();
+                },
+                preConfirm: () => {
+                    if (currentRating === 0) {
+                        Swal.showValidationMessage('Silakan berikan rating');
+                        return false;
+                    }
+                    return {
+                        rating: currentRating,
+                        comment: document.getElementById('review-comment').value
+                    };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    submitReview(bookingId, result.value);
+                }
+            });
+
+            // Add styles for stars
+            const style = document.createElement('style');
+            style.textContent = `
+                .star-rating {
+                    color: #D1D5DB; /* gray-300 */
+                    transition: color 0.2s;
+                }
+                .star-rating.active {
+                    color: #F59E0B; /* yellow-500 */
+                }
+                .swal-wide {
+                    width: 500px !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        function setRating(rating) {
+            currentRating = rating;
+            updateStars();
+        }
+
+        function updateStars() {
+            const stars = document.querySelectorAll('.star-rating');
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function submitReview(bookingId, reviewData) {
+            const formData = new FormData();
+            formData.append('rating', reviewData.rating);
+            formData.append('comment', reviewData.comment);
+
+            fetch(`/bookings/${bookingId}/reviews`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: 'Review Anda telah berhasil dikirim',
+                            confirmButtonColor: '#8B5CF6'
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        throw new Error(data.message || 'Terjadi kesalahan');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan saat mengirim review',
+                        confirmButtonColor: '#8B5CF6'
+                    });
+                });
+        }
+    </script>
 </x-app-layout>

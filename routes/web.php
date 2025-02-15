@@ -6,6 +6,7 @@ use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('about', [LandingPageController::class, 'about'])->name('about');
@@ -24,4 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('booking.index');
     Route::post('/booking/create', [BookingController::class, 'store'])->name('booking.store');
     Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+    
+    Route::post('/bookings/{booking}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
